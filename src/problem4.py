@@ -4,7 +4,7 @@ Exam 1, problem 4.
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
          and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -73,7 +73,22 @@ def problem4(number_of_stairs, step_size, starting_point, window):
     # IMPORTANT: For PARTIAL CREDIT, you can draw just the black "bottoms"
     #            of the stair steps.
     # -------------------------------------------------------------------------
+    point1 = rg.Point(starting_point.x, starting_point.y)
+    point2 = rg.Point(starting_point.x, starting_point.y- step_size)
+    for _ in range(number_of_stairs):
+        line1= rg.Line(point1, rg.Point(point1.x, point1.y- step_size))
+        line1.color = 'magenta'
+        line1.thickness = 3
+        line2= rg.Line(point2, rg.Point(point2.x+ step_size, point2.y))
+        line2.color = 'black'
+        line2.thickness = 3
 
+        point1 = rg.Point(point1.x+step_size, point1.y- step_size)
+        point2 = rg.Point(point2.x+step_size, point2.y - step_size)
+
+        line1.attach_to(window)
+        line2.attach_to(window)
+    window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
