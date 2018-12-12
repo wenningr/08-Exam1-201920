@@ -75,6 +75,7 @@ def problem4(number_of_stairs, step_size, starting_point, window):
     # -------------------------------------------------------------------------
     point1 = rg.Point(starting_point.x, starting_point.y)
     point2 = rg.Point(starting_point.x, starting_point.y- step_size)
+    point3 = point1
     for _ in range(number_of_stairs):
         line1= rg.Line(point1, rg.Point(point1.x, point1.y- step_size))
         line1.color = 'magenta'
@@ -83,11 +84,15 @@ def problem4(number_of_stairs, step_size, starting_point, window):
         line2.color = 'black'
         line2.thickness = 3
 
+
         point1 = rg.Point(point1.x+step_size, point1.y- step_size)
         point2 = rg.Point(point2.x+step_size, point2.y - step_size)
 
         line1.attach_to(window)
         line2.attach_to(window)
+        point3.attach_to(window)
+    point4 = point1
+    point4.attach_to(window)
     window.render()
 
 # -----------------------------------------------------------------------------
